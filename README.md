@@ -1,5 +1,9 @@
 # Fastdeck
 
+[![PyPI](https://img.shields.io/pypi/v/fastdeck.svg)](https://pypi.org/project/fastdeck/)
+[![Documentation](https://img.shields.io/badge/docs-latest-brightgreen.svg)](https://avrabyt.github.io/fastdeck/fastdeck.html#fastdeck)
+
+
 Fastdeck is a Python library for creating and managing slide decks.
 
 **Fastdeck Python library is maintained to support the app ⚡️[Fastdeck AI](https://fastdeckai.com).**
@@ -8,7 +12,7 @@ Fastdeck is a Python library for creating and managing slide decks.
 
 ## Installation
 
-You can install FastDeck using pip:
+You can install `fastdeck` using pip:
 
 ```bash
 pip install fastdeck==0.1.0
@@ -16,7 +20,7 @@ pip install fastdeck==0.1.0
 
 ## Usage
 
-Here's a basic overview of how to use FastDeck:
+Here's a basic overview of how to use Fastdeck:
 
 1. Import the necessary classes:
 
@@ -55,8 +59,6 @@ presentation.save_html("my_presentation.html")
 ```
 
 ## Example
-
-Here's a more comprehensive example that demonstrates various features of FastDeck:
 
 ```python
 from fastdeck import Presentation, Slide, Content
@@ -102,6 +104,9 @@ plotly_slide.save_slide_html('plotly_slide.html')  # Save individual slide
 
 # Save the entire presentation
 presentation.save_html("fastdeck_demo.html")
+
+# Returns the presentation as an HTML string
+presentation.to_html() # Paste it directly over any html viewer to render
 ```
 
 This example creates a presentation with three slides:
@@ -113,7 +118,7 @@ After running this script, you'll have an HTML file named `fastdeck_demo.html` t
 
 ## Documentation
 
-For more detailed information about FastDeck's classes and methods, please refer to the [documentation](https://avrabyt.github.io/fastdeck/).
+For more detailed information about Fastdeck's classes and methods, please refer to the [documentation](https://avrabyt.github.io/fastdeck/).
 
 ## Contributing
 
