@@ -1,4 +1,4 @@
-# FastDeck
+# Fastdeck
 
 Fastdeck is a Python library for creating and managing slide decks.
 
@@ -11,7 +11,7 @@ Fastdeck is a Python library for creating and managing slide decks.
 You can install FastDeck using pip:
 
 ```bash
-pip install fastdeck
+pip install fastdeck==0.1.0
 ```
 
 ## Usage
@@ -113,7 +113,7 @@ After running this script, you'll have an HTML file named `fastdeck_demo.html` t
 
 ## Documentation
 
-For more detailed information about FastDeck's classes and methods, please refer to the [documentation](link_to_your_documentation).
+For more detailed information about FastDeck's classes and methods, please refer to the [documentation](https://avrabyt.github.io/fastdeck/).
 
 ## Contributing
 
