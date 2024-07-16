@@ -19,15 +19,21 @@ jobs:
       with:
         python-version: '3.12'
 
+    - name: Cache pip packages
+      uses: actions/cache@v2
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pdoc
-        pip install beautifulsoup4 requests matplotlib
-        pip install plotly pandas vega altair
+        pip install -r requirements.txt
 
     - name: Generate Documentation
-      run: pdoc --html --output-dir ./docs fastdeck
+      run: pdoc -o ./docs fastdeck
 
     - name: Deploy to GitHub Pages
       if: github.event_name == 'push'

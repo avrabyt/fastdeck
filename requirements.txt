@@ -1,0 +1,4 @@
+pdoc
+beautifulsoup4
+requests
+matplotlib
