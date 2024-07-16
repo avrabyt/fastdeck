@@ -1,7 +1,19 @@
 # Fastdeck
 
-[![PyPI](https://img.shields.io/pypi/v/fastdeck.svg)](https://pypi.org/project/fastdeck/)
-[![Documentation](https://img.shields.io/badge/docs-latest-brightgreen.svg)](https://avrabyt.github.io/fastdeck/fastdeck.html#fastdeck)
+<table>
+  <tr>
+    <td>
+      <a href="https://pypi.org/project/fastdeck/" target="_blank">
+        <img src="https://img.shields.io/pypi/v/fastdeck.svg" alt="PyPI">
+      </a>
+    </td>
+    <td>
+      <a href="https://avrabyt.github.io/fastdeck/fastdeck.html#fastdeck" target="_blank">
+        <img src="https://img.shields.io/badge/docs-latest-brightgreen.svg" alt="Documentation">
+      </a>
+    </td>
+  </tr>
+</table>
 
 
 Fastdeck is a Python library for creating and managing slide decks.
