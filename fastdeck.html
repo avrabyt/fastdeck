@@ -253,32 +253,68 @@ fastdeck    </h1>
 <div class="pdoc-code codehilite">
 <pre><span></span><code><span class="kn">from</span> <span class="nn">fastdeck</span> <span class="kn">import</span> <span class="n">Presentation</span><span class="p">,</span> <span class="n">Slide</span><span class="p">,</span> <span class="n">Content</span>
 <span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># Create output directory</span>
+<span class="n">output_dir</span> <span class="o">=</span> <span class="s1">&#39;fastdeck_demo_output&#39;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Create a new presentation</span>
 <span class="n">presentation</span> <span class="o">=</span> <span class="n">Presentation</span><span class="p">()</span>
 
+<span class="c1"># Define a common style for centering</span>
+<span class="n">center_style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;style&#39;</span><span class="p">:</span> <span class="s1">&#39;display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center;&#39;</span><span class="p">}</span>
+
 <span class="c1"># Create the title slide</span>
 <span class="n">title_slide</span> <span class="o">=</span> <span class="n">Slide</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">title_content</span> <span class="o">=</span> <span class="n">Content</span><span class="p">()</span>
-<span class="n">title_content</span><span class="o">.</span><span class="n">add_heading</span><span class="p">(</span><span class="s2">&quot;FastDeck Demo&quot;</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="s2">&quot;h1&quot;</span><span class="p">)</span>
-<span class="n">title_content</span><span class="o">.</span><span class="n">add_text</span><span class="p">(</span><span class="s2">&quot;A powerful library for creating slide decks&quot;</span><span class="p">)</span>
-<span class="n">title_slide</span><span class="o">.</span><span class="n">add_content</span><span class="p">([</span><span class="n">title_content</span><span class="o">.</span><span class="n">render</span><span class="p">()])</span>
+<span class="n">title_content</span><span class="o">.</span><span class="n">add_heading</span><span class="p">(</span><span class="s2">&quot;Fastdeck&quot;</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="s2">&quot;h1&quot;</span><span class="p">)</span>
+<span class="n">title_content</span><span class="o">.</span><span class="n">add_text</span><span class="p">(</span><span class="s2">&quot;Create and manage slide decks in pure Python.&quot;</span><span class="p">)</span>
+<span class="n">title_slide</span><span class="o">.</span><span class="n">add_content</span><span class="p">([</span><span class="n">title_content</span><span class="o">.</span><span class="n">render</span><span class="p">()],</span> <span class="n">styles</span><span class="o">=</span><span class="p">[</span><span class="n">center_style</span><span class="p">])</span>
 <span class="n">presentation</span><span class="o">.</span><span class="n">add_slide</span><span class="p">(</span><span class="n">title_slide</span><span class="p">)</span>
-<span class="n">title_slide</span><span class="o">.</span><span class="n">save_slide_html</span><span class="p">(</span><span class="s1">&#39;title_slide.html&#39;</span><span class="p">)</span>  <span class="c1"># Save individual slide</span>
+<span class="c1"># Save indiviual slides</span>
+<span class="c1"># title_slide.save_slide_html(os.path.join(output_dir, &#39;title_slide.html&#39;))</span>
 
 <span class="c1"># Create a content slide</span>
 <span class="n">content_slide</span> <span class="o">=</span> <span class="n">Slide</span><span class="p">()</span>
 <span class="n">content</span> <span class="o">=</span> <span class="n">Content</span><span class="p">()</span>
-<span class="n">content</span><span class="o">.</span><span class="n">add_heading</span><span class="p">(</span><span class="s2">&quot;Features of FastDeck&quot;</span><span class="p">)</span>
+<span class="n">content</span><span class="o">.</span><span class="n">add_heading</span><span class="p">(</span><span class="s2">&quot;Features of Fastdeck&quot;</span><span class="p">)</span>
 <span class="n">content</span><span class="o">.</span><span class="n">add_list</span><span class="p">([</span>
     <span class="s2">&quot;Easy to use Python API&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Support for various content types&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Customizable styles&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Export to HTML&quot;</span>
 <span class="p">])</span>
-<span class="n">content_slide</span><span class="o">.</span><span class="n">add_content</span><span class="p">([</span><span class="n">content</span><span class="o">.</span><span class="n">render</span><span class="p">()])</span>
+<span class="n">content_slide</span><span class="o">.</span><span class="n">add_content</span><span class="p">([</span><span class="n">content</span><span class="o">.</span><span class="n">render</span><span class="p">()],</span> <span class="n">styles</span><span class="o">=</span><span class="p">[</span><span class="n">center_style</span><span class="p">])</span>
 <span class="n">presentation</span><span class="o">.</span><span class="n">add_slide</span><span class="p">(</span><span class="n">content_slide</span><span class="p">)</span>
-<span class="n">content_slide</span><span class="o">.</span><span class="n">save_slide_html</span><span class="p">(</span><span class="s1">&#39;content_slide.html&#39;</span><span class="p">)</span>  <span class="c1"># Save individual slide</span>
+
+
+<span class="c1"># Create a slide advertising Fastdeck AI App</span>
+<span class="n">ai_app_slide</span> <span class="o">=</span> <span class="n">Slide</span><span class="p">()</span>
+<span class="n">ai_app_content</span> <span class="o">=</span> <span class="n">Content</span><span class="p">()</span>
+<span class="n">ai_app_content</span><span class="o">.</span><span class="n">add_heading</span><span class="p">(</span><span class="s2">&quot;Try Fastdeck AI App&quot;</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="s2">&quot;h2&quot;</span><span class="p">)</span>
+<span class="n">ai_app_content</span><span class="o">.</span><span class="n">add_text</span><span class="p">(</span><span class="s2">&quot;Create and share minimal slides in seconds, on the go&quot;</span><span class="p">)</span>
+<span class="n">ai_app_content</span><span class="o">.</span><span class="n">add_text</span><span class="p">(</span><span class="s2">&quot;Powered by AI&quot;</span><span class="p">)</span>
+<span class="n">ai_app_content</span><span class="o">.</span><span class="n">add_text</span><span class="p">(</span><span class="s1">&#39;&lt;a href=&quot;https://fastdeckai.com&quot; target=&quot;_blank&quot;&gt;Try ⚡️ Fastdeck AI&lt;/a&gt;&#39;</span><span class="p">)</span>
+<span class="n">ai_app_slide</span><span class="o">.</span><span class="n">add_content</span><span class="p">([</span><span class="n">ai_app_content</span><span class="o">.</span><span class="n">render</span><span class="p">()],</span> <span class="n">styles</span><span class="o">=</span><span class="p">[</span><span class="n">center_style</span><span class="p">])</span>
+<span class="n">presentation</span><span class="o">.</span><span class="n">add_slide</span><span class="p">(</span><span class="n">ai_app_slide</span><span class="p">)</span>
+
+
+<span class="c1"># Create a slide about what more you can do with Fastdeck</span>
+<span class="n">more_features_slide</span> <span class="o">=</span> <span class="n">Slide</span><span class="p">()</span>
+<span class="n">more_features_content</span> <span class="o">=</span> <span class="n">Content</span><span class="p">()</span>
+<span class="n">more_features_content</span><span class="o">.</span><span class="n">add_heading</span><span class="p">(</span><span class="s2">&quot;What more you can do with Fastdeck&quot;</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="s2">&quot;h2&quot;</span><span class="p">)</span>
+<span class="n">more_features_content</span><span class="o">.</span><span class="n">add_list</span><span class="p">([</span>
+    <span class="s2">&quot;Create interactive charts and graphs&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Embed videos and images&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Customize themes and layouts&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Generate presentations programmatically&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Integrate with data analysis workflows&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;and more ...&quot;</span>
+<span class="p">])</span>
+<span class="n">more_features_slide</span><span class="o">.</span><span class="n">add_content</span><span class="p">([</span><span class="n">more_features_content</span><span class="o">.</span><span class="n">render</span><span class="p">()],</span> <span class="n">styles</span><span class="o">=</span><span class="p">[</span><span class="n">center_style</span><span class="p">])</span>
+<span class="n">presentation</span><span class="o">.</span><span class="n">add_slide</span><span class="p">(</span><span class="n">more_features_slide</span><span class="p">)</span>
+
 
 <span class="c1"># Create a slide with a Plotly graph</span>
 <span class="n">plotly_slide</span> <span class="o">=</span> <span class="n">Slide</span><span class="p">()</span>
@@ -286,27 +322,66 @@ fastdeck    </h1>
 <span class="n">plotly_content</span><span class="o">.</span><span class="n">add_heading</span><span class="p">(</span><span class="s2">&quot;Plotly Graph&quot;</span><span class="p">)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">iris</span><span class="p">()</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;sepal_width&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sepal_length&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;species&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s1">&#39;petal_length&#39;</span><span class="p">,</span> <span class="n">hover_data</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;petal_width&#39;</span><span class="p">])</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">autosize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Make the plot transparent</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+    <span class="n">paper_bgcolor</span><span class="o">=</span><span class="s1">&#39;rgba(0,0,0,0)&#39;</span><span class="p">,</span>  <span class="c1"># Transparent background</span>
+    <span class="n">plot_bgcolor</span><span class="o">=</span><span class="s1">&#39;rgba(0,0,0,0)&#39;</span><span class="p">,</span>   <span class="c1"># Transparent plot area</span>
+    <span class="n">autosize</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
 <span class="n">json_fig</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">to_json</span><span class="p">()</span>
 <span class="n">plotly_slide</span><span class="o">.</span><span class="n">add_content</span><span class="p">([</span><span class="n">json_fig</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">styles</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;stretch&#39;</span><span class="p">}])</span>
 <span class="n">presentation</span><span class="o">.</span><span class="n">add_slide</span><span class="p">(</span><span class="n">plotly_slide</span><span class="p">)</span>
 <span class="n">plotly_slide</span><span class="o">.</span><span class="n">save_slide_html</span><span class="p">(</span><span class="s1">&#39;plotly_slide.html&#39;</span><span class="p">)</span>  <span class="c1"># Save individual slide</span>
 
+
+<span class="c1"># Create a slide with an embedded video</span>
+<span class="n">video_slide</span> <span class="o">=</span> <span class="n">Slide</span><span class="p">()</span>
+<span class="n">video_content</span> <span class="o">=</span> <span class="n">Content</span><span class="p">()</span>
+<span class="n">video_content</span><span class="o">.</span><span class="n">add_heading</span><span class="p">(</span><span class="s2">&quot;Embedded Video Support&quot;</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="s2">&quot;h2&quot;</span><span class="p">)</span>
+<span class="n">video_embed</span> <span class="o">=</span> <span class="s1">&#39;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/d2JPEDpMiw8&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen style=&quot;max-width: 80%; max-height: 60vh;&quot;&gt;&lt;/iframe&gt;&#39;</span>
+<span class="n">video_content</span><span class="o">.</span><span class="n">add_div</span><span class="p">(</span><span class="n">video_embed</span><span class="p">)</span>
+<span class="n">video_slide</span><span class="o">.</span><span class="n">add_content</span><span class="p">([</span><span class="n">video_content</span><span class="o">.</span><span class="n">render</span><span class="p">()],</span> <span class="n">styles</span><span class="o">=</span><span class="p">[</span><span class="n">center_style</span><span class="p">])</span>
+<span class="n">presentation</span><span class="o">.</span><span class="n">add_slide</span><span class="p">(</span><span class="n">video_slide</span><span class="p">)</span>
+
+
+<span class="c1"># Create a slide with a cat image</span>
+<span class="n">image_slide</span> <span class="o">=</span> <span class="n">Slide</span><span class="p">()</span>
+<span class="n">image_content</span> <span class="o">=</span> <span class="n">Content</span><span class="p">()</span>
+<span class="n">image_content</span><span class="o">.</span><span class="n">add_heading</span><span class="p">(</span><span class="s2">&quot;Image Integration&quot;</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="s2">&quot;h2&quot;</span><span class="p">)</span>
+<span class="n">image_url</span> <span class="o">=</span> <span class="s2">&quot;https://images.unsplash.com/photo-1608848461950-0fe51dfc41cb?fm=jpg&amp;q=60&amp;w=3000&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D&quot;</span>
+<span class="n">image_content</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">image_url</span><span class="p">,</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;Cute cat&quot;</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="s1">&#39;style&#39;</span><span class="p">:</span> <span class="s1">&#39;max-width: 80%; max-height: 60vh; object-fit: contain;&#39;</span><span class="p">})</span>
+<span class="n">image_slide</span><span class="o">.</span><span class="n">add_content</span><span class="p">([</span><span class="n">image_content</span><span class="o">.</span><span class="n">render</span><span class="p">()],</span> <span class="n">styles</span><span class="o">=</span><span class="p">[</span><span class="n">center_style</span><span class="p">])</span>
+<span class="n">presentation</span><span class="o">.</span><span class="n">add_slide</span><span class="p">(</span><span class="n">image_slide</span><span class="p">)</span>
+
+
 <span class="c1"># Save the entire presentation</span>
-<span class="n">presentation</span><span class="o">.</span><span class="n">save_html</span><span class="p">(</span><span class="s2">&quot;fastdeck_demo.html&quot;</span><span class="p">)</span>
+<span class="n">presentation</span><span class="o">.</span><span class="n">save_html</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="s2">&quot;fastdeck_demo.html&quot;</span><span class="p">),</span>
+    <span class="n">theme</span><span class="o">=</span><span class="s2">&quot;night&quot;</span><span class="p">,</span>  <span class="c1"># &#39;black&#39;, &#39;white&#39;, &#39;league&#39;, &#39;beige&#39;, &#39;sky&#39;, &#39;night&#39;, &#39;serif&#39;, &#39;simple&#39;, &#39;solarized&#39;, &#39;blood&#39;, &#39;moon&#39;</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">1920</span><span class="p">,</span>     <span class="c1"># 16:9 width </span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">1080</span><span class="p">,</span>    <span class="c1"># 16:9 height </span>
+    <span class="n">margin</span><span class="o">=</span><span class="mf">0.07</span><span class="p">,</span>    <span class="c1"># 7% margin</span>
+    <span class="n">minscale</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>   <span class="c1"># Can shrink to 30% of original size</span>
+    <span class="n">maxscale</span><span class="o">=</span><span class="mf">2.0</span>    <span class="c1"># Can grow to 200% of original size</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Presentation and individual slides have been saved in the directory: </span><span class="si">{</span><span class="n">output_dir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1"># Returns the presentation as an HTML string</span>
-<span class="n">presentation</span><span class="o">.</span><span class="n">to_html</span><span class="p">()</span> <span class="c1"># Paste it directly over any html viewer to render</span>
+<span class="n">html_string</span> <span class="o">=</span> <span class="n">presentation</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span>
+    <span class="n">theme</span><span class="o">=</span><span class="s2">&quot;blood&quot;</span><span class="p">,</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">1920</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">1080</span><span class="p">,</span>
+    <span class="n">margin</span><span class="o">=</span><span class="mf">0.07</span><span class="p">,</span>
+    <span class="n">minscale</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+    <span class="n">maxscale</span><span class="o">=</span><span class="mf">2.0</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;HTML string generated. You can paste it directly into any HTML viewer to render.&quot;</span><span class="p">)</span>
 </code></pre>
 </div>
-
-<p>This example creates a presentation with three slides:</p>
-
-<ol>
-<li>A title slide</li>
-<li>A content slide with a list of features</li>
-<li>A slide with a Plotly graph</li>
-</ol>
 
 <p>After running this script, you'll have an HTML file named <code>fastdeck_demo.html</code> that you can open in a web browser to view your presentation.</p>
 
